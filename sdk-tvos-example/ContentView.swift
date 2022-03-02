@@ -1,21 +1,23 @@
 //
 //  ContentView.swift
-//  sdk-tvos-example
+//  example-tvos
 //
-//  Created by Ladislav Navratil on 02.03.2022.
+//  Created by Ladislav Navratil on 21.02.2022.
 //
 
 import SwiftUI
 
 struct ContentView: View {
-    var body: some View {
-        Text("Hello, world!")
-            .padding()
-    }
+  var body: some View {
+    PlayerView()
+      .transition(.move(edge: .bottom))
+      .edgesIgnoringSafeArea(.all)
+  }
 }
 
 struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
+  static var previews: some View {
+    ContentView()
+  }
 }
+
