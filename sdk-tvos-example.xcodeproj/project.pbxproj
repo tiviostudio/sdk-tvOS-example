@@ -11,11 +11,10 @@
 		3119B5A327CF0405000CF40E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3119B5A227CF0405000CF40E /* ContentView.swift */; };
 		3119B5A527CF0407000CF40E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3119B5A427CF0407000CF40E /* Assets.xcassets */; };
 		3119B5A827CF0407000CF40E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3119B5A727CF0407000CF40E /* Preview Assets.xcassets */; };
-		3119B5B527CF058E000CF40E /* Tivio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3119B5B327CF0589000CF40E /* Tivio.framework */; };
-		3119B5B627CF058E000CF40E /* Tivio.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3119B5B327CF0589000CF40E /* Tivio.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3119B5B927CF05DA000CF40E /* PlayerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3119B5B727CF05DA000CF40E /* PlayerController.swift */; };
 		3119B5BA27CF05DA000CF40E /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3119B5B827CF05DA000CF40E /* PlayerView.swift */; };
-		3119B5BE27CF0660000CF40E /* main.jsbundle in Resources */ = {isa = PBXBuildFile; fileRef = 3119B5BD27CF0660000CF40E /* main.jsbundle */; };
+		7E2AA93B2BBF0608008F52FE /* PlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2AA93A2BBF0608008F52FE /* PlayerViewModel.swift */; };
+		7E2AA93F2BBF08CB008F52FE /* Tivio.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E2AA93E2BBF08CB008F52FE /* Tivio.xcframework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,7 +24,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				3119B5B627CF058E000CF40E /* Tivio.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -38,10 +36,10 @@
 		3119B5A227CF0405000CF40E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		3119B5A427CF0407000CF40E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3119B5A727CF0407000CF40E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		3119B5B327CF0589000CF40E /* Tivio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Tivio.framework; sourceTree = "<group>"; };
 		3119B5B727CF05DA000CF40E /* PlayerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerController.swift; sourceTree = "<group>"; };
 		3119B5B827CF05DA000CF40E /* PlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
-		3119B5BD27CF0660000CF40E /* main.jsbundle */ = {isa = PBXFileReference; lastKnownFileType = file; path = main.jsbundle; sourceTree = SOURCE_ROOT; };
+		7E2AA93A2BBF0608008F52FE /* PlayerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewModel.swift; sourceTree = "<group>"; };
+		7E2AA93E2BBF08CB008F52FE /* Tivio.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Tivio.xcframework; path = "Carthage/Checkouts/sdk-tvos/Carthage/Build/Tivio.xcframework"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,7 +47,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3119B5B527CF058E000CF40E /* Tivio.framework in Frameworks */,
+				7E2AA93F2BBF08CB008F52FE /* Tivio.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,7 +57,6 @@
 		3119B59427CF0405000CF40E = {
 			isa = PBXGroup;
 			children = (
-				3119B5B327CF0589000CF40E /* Tivio.framework */,
 				3119B59F27CF0405000CF40E /* sdk-tvos-example */,
 				3119B59E27CF0405000CF40E /* Products */,
 			);
@@ -80,9 +77,10 @@
 				3119B5A227CF0405000CF40E /* ContentView.swift */,
 				3119B5B727CF05DA000CF40E /* PlayerController.swift */,
 				3119B5B827CF05DA000CF40E /* PlayerView.swift */,
-				3119B5BD27CF0660000CF40E /* main.jsbundle */,
 				3119B5A427CF0407000CF40E /* Assets.xcassets */,
 				3119B5A627CF0407000CF40E /* Preview Content */,
+				7E2AA93A2BBF0608008F52FE /* PlayerViewModel.swift */,
+				7E2AA93E2BBF08CB008F52FE /* Tivio.xcframework */,
 			);
 			path = "sdk-tvos-example";
 			sourceTree = "<group>";
@@ -154,7 +152,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3119B5BE27CF0660000CF40E /* main.jsbundle in Resources */,
 				3119B5A827CF0407000CF40E /* Preview Assets.xcassets in Resources */,
 				3119B5A527CF0407000CF40E /* Assets.xcassets in Resources */,
 			);
@@ -168,6 +165,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3119B5A327CF0405000CF40E /* ContentView.swift in Sources */,
+				7E2AA93B2BBF0608008F52FE /* PlayerViewModel.swift in Sources */,
 				3119B5A127CF0405000CF40E /* sdk_tvos_exampleApp.swift in Sources */,
 				3119B5B927CF05DA000CF40E /* PlayerController.swift in Sources */,
 				3119B5BA27CF05DA000CF40E /* PlayerView.swift in Sources */,
@@ -301,11 +299,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"sdk-tvos-example/Preview Content\"";
+				DEVELOPMENT_TEAM = AQNH6X6GWT;
 				ENABLE_PREVIEWS = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Checkouts/sdk-tvos/Carthage/Build/tvOS",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Carthage/Checkouts/sdk-tvOS/Carthage/Build/tvOS",
 				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -331,11 +331,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"sdk-tvos-example/Preview Content\"";
+				DEVELOPMENT_TEAM = AQNH6X6GWT;
 				ENABLE_PREVIEWS = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Checkouts/sdk-tvos/Carthage/Build/tvOS",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Carthage/Checkouts/sdk-tvOS/Carthage/Build/tvOS",
 				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

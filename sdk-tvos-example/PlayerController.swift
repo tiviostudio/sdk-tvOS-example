@@ -23,7 +23,8 @@ class PlayerController: TivioPlayerWrapperDelegate {
     }
     
     NotificationCenter.default.addObserver(self, selector: #selector(playerDidFinishPlay), name: .AVPlayerItemDidPlayToEndTime, object: nil)
-//    NotificationCenter.default.addObserver(self, selector: #selector(playerSeeked), name: .AVPlayerItemTimeJumped, object: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(playerSeeked), name: .AVPlayerItemTimeJumped, object: nil)
+    
   }
   
   @objc func playerDidFinishPlay() {
@@ -34,7 +35,7 @@ class PlayerController: TivioPlayerWrapperDelegate {
   
   @objc func playerSeeked() {
     if(self.player.currentTime().value != 0) {
-        self.playerWrapper.seek(to: UInt(self.player.currentTime().value))
+       self.playerWrapper.seek(to: UInt(self.player.currentTime().value))
     }
   }
   
@@ -43,9 +44,11 @@ class PlayerController: TivioPlayerWrapperDelegate {
   }
   
   func setSource(_ source: TivioPlayerSource!) {
-    self.player.replaceCurrentItem(with: AVPlayerItem(url: URL(string: source.uri)!))
-    self.player.seek(to: CMTimeMake(value: Int64(source.startPosition), timescale: 1000))
-    self.player.play()
+    if (source.uri != "") {
+      self.player.replaceCurrentItem(with: AVPlayerItem(url: URL(string: source.uri)!))
+      self.player.seek(to: CMTimeMake(value: Int64(source.startPosition), timescale: 1000))
+      self.player.play()
+    }
   }
   
   func onAdMetadata(_ adMetadata: TivioAdMetadata!) {

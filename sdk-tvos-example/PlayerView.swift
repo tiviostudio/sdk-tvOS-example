@@ -10,6 +10,9 @@ import AVKit
 import Tivio
 
 struct PlayerView: View {
+  
+  @EnvironmentObject var playerViewModel: PlayerViewModel
+
   private let player = AVPlayer()
   private var playerController: PlayerController {
     return PlayerController(player: self.player)
@@ -17,21 +20,26 @@ struct PlayerView: View {
   
   var body: some View {
     VideoPlayer(player: player)
-      .onPlayPauseCommand {
+      .edgesIgnoringSafeArea(.all)
+      .onAppear() {
         if((player.currentItem == nil)) {
             let dateFormater = DateFormatter()
             dateFormater.dateFormat = "yyyy-MM-dd HH:mm:ss"
           
             self.playerController.playerWrapper.setSource(TivioPlayerSource(
-              channel: "prima hd",
-                 mode: "timeshift",
-                  uri: "https://cs0a-ttc.as.4net.tv/at/hls/master/vod_703_h264hd12.m3u8?start=1645279680&end=1645287300&device=88a292a41acd5b6035aa1ebfb067057c&stream_profiles=h264hd12&backoffice=testing",
-              epgFrom: UInt(dateFormater.date(from: "2022-02-19 15:10:00")!.timeIntervalSince1970)*1000,
-                epgTo: UInt(dateFormater.date(from: "2022-02-19 16:55:00")!.timeIntervalSince1970)*1000,
-          streamStart: UInt(dateFormater.date(from: "2022-02-19 15:09:00")!.timeIntervalSince1970)*1000,
-    startFromPosition: 60000
+              channel: "dvtv-channel",
+                 mode: "live",
+                  uri: "",
+              epgFrom: UInt(Date().timeIntervalSince1970) * 1000,
+                epgTo: UInt(Date().timeIntervalSince1970) * 1000,
+          streamStart: UInt(Date().timeIntervalSince1970) * 1000,
+    startFromPosition: 0
                     ), calibrationId: "default")
-                  }
+      }
+    }
+      .onDisappear() {
+        self.playerViewModel.shouldPlay = false
+        player.replaceCurrentItem(with: nil)
       }
   }
 }
