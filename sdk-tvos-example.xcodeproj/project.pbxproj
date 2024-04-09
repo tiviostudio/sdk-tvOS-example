@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -14,7 +14,7 @@
 		3119B5B927CF05DA000CF40E /* PlayerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3119B5B727CF05DA000CF40E /* PlayerController.swift */; };
 		3119B5BA27CF05DA000CF40E /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3119B5B827CF05DA000CF40E /* PlayerView.swift */; };
 		7E2AA93B2BBF0608008F52FE /* PlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2AA93A2BBF0608008F52FE /* PlayerViewModel.swift */; };
-		7E2AA93F2BBF08CB008F52FE /* Tivio.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E2AA93E2BBF08CB008F52FE /* Tivio.xcframework */; };
+		7E4E47E22BC5562D00B9CB4F /* Tivio in Frameworks */ = {isa = PBXBuildFile; productRef = 7E4E47E12BC5562D00B9CB4F /* Tivio */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -39,7 +39,6 @@
 		3119B5B727CF05DA000CF40E /* PlayerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerController.swift; sourceTree = "<group>"; };
 		3119B5B827CF05DA000CF40E /* PlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
 		7E2AA93A2BBF0608008F52FE /* PlayerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewModel.swift; sourceTree = "<group>"; };
-		7E2AA93E2BBF08CB008F52FE /* Tivio.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Tivio.xcframework; path = "Carthage/Checkouts/sdk-tvos/Carthage/Build/Tivio.xcframework"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,7 +46,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7E2AA93F2BBF08CB008F52FE /* Tivio.xcframework in Frameworks */,
+				7E4E47E22BC5562D00B9CB4F /* Tivio in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,7 +79,6 @@
 				3119B5A427CF0407000CF40E /* Assets.xcassets */,
 				3119B5A627CF0407000CF40E /* Preview Content */,
 				7E2AA93A2BBF0608008F52FE /* PlayerViewModel.swift */,
-				7E2AA93E2BBF08CB008F52FE /* Tivio.xcframework */,
 			);
 			path = "sdk-tvos-example";
 			sourceTree = "<group>";
@@ -110,6 +108,9 @@
 			dependencies = (
 			);
 			name = "sdk-tvos-example";
+			packageProductDependencies = (
+				7E4E47E12BC5562D00B9CB4F /* Tivio */,
+			);
 			productName = "sdk-tvos-example";
 			productReference = 3119B59D27CF0405000CF40E /* sdk-tvos-example.app */;
 			productType = "com.apple.product-type.application";
@@ -138,6 +139,9 @@
 				Base,
 			);
 			mainGroup = 3119B59427CF0405000CF40E;
+			packageReferences = (
+				7E4E47E02BC5562D00B9CB4F /* XCLocalSwiftPackageReference "../xcode/sdk-tvos" */,
+			);
 			productRefGroup = 3119B59E27CF0405000CF40E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -377,6 +381,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		7E4E47E02BC5562D00B9CB4F /* XCLocalSwiftPackageReference "../xcode/sdk-tvos" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = "../xcode/sdk-tvos";
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		7E4E47E12BC5562D00B9CB4F /* Tivio */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Tivio;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 3119B59527CF0405000CF40E /* Project object */;
 }
