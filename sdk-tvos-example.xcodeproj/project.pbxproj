@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 60;
+	objectVersion = 55;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -14,7 +14,7 @@
 		3119B5B927CF05DA000CF40E /* PlayerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3119B5B727CF05DA000CF40E /* PlayerController.swift */; };
 		3119B5BA27CF05DA000CF40E /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3119B5B827CF05DA000CF40E /* PlayerView.swift */; };
 		7E2AA93B2BBF0608008F52FE /* PlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2AA93A2BBF0608008F52FE /* PlayerViewModel.swift */; };
-		7E4E47E22BC5562D00B9CB4F /* Tivio in Frameworks */ = {isa = PBXBuildFile; productRef = 7E4E47E12BC5562D00B9CB4F /* Tivio */; };
+		7E41CBCC2BC56B4A0090A4B9 /* Tivio in Frameworks */ = {isa = PBXBuildFile; productRef = 7E41CBCB2BC56B4A0090A4B9 /* Tivio */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -46,7 +46,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7E4E47E22BC5562D00B9CB4F /* Tivio in Frameworks */,
+				7E41CBCC2BC56B4A0090A4B9 /* Tivio in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -109,7 +109,7 @@
 			);
 			name = "sdk-tvos-example";
 			packageProductDependencies = (
-				7E4E47E12BC5562D00B9CB4F /* Tivio */,
+				7E41CBCB2BC56B4A0090A4B9 /* Tivio */,
 			);
 			productName = "sdk-tvos-example";
 			productReference = 3119B59D27CF0405000CF40E /* sdk-tvos-example.app */;
@@ -140,7 +140,7 @@
 			);
 			mainGroup = 3119B59427CF0405000CF40E;
 			packageReferences = (
-				7E4E47E02BC5562D00B9CB4F /* XCLocalSwiftPackageReference "../xcode/sdk-tvos" */,
+				7E41CBCA2BC56B4A0090A4B9 /* XCRemoteSwiftPackageReference "ads-sdk-tvos" */,
 			);
 			productRefGroup = 3119B59E27CF0405000CF40E /* Products */;
 			projectDirPath = "";
@@ -382,16 +382,21 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCLocalSwiftPackageReference section */
-		7E4E47E02BC5562D00B9CB4F /* XCLocalSwiftPackageReference "../xcode/sdk-tvos" */ = {
-			isa = XCLocalSwiftPackageReference;
-			relativePath = "../xcode/sdk-tvos";
+/* Begin XCRemoteSwiftPackageReference section */
+		7E41CBCA2BC56B4A0090A4B9 /* XCRemoteSwiftPackageReference "ads-sdk-tvos" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/tiviostudio/ads-sdk-tvos";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
 		};
-/* End XCLocalSwiftPackageReference section */
+/* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		7E4E47E12BC5562D00B9CB4F /* Tivio */ = {
+		7E41CBCB2BC56B4A0090A4B9 /* Tivio */ = {
 			isa = XCSwiftPackageProductDependency;
+			package = 7E41CBCA2BC56B4A0090A4B9 /* XCRemoteSwiftPackageReference "ads-sdk-tvos" */;
 			productName = Tivio;
 		};
 /* End XCSwiftPackageProductDependency section */
