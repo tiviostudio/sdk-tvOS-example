@@ -1,150 +1,120 @@
 import SwiftUI
+import Tivio
 
 struct ContentView: View {
   @EnvironmentObject var playerViewModel: PlayerViewModel
-
   
+  @EnvironmentObject var programViewModel: ProgramViewModel
+  
+//  var epgData: [Any]
+
   var body: some View {
     GeometryReader { geometry in
-      
-      LinearGradient(
-                      gradient: Gradient(colors: [
-                          Color(red: 100 / 255.0, green: 19 / 255.0, blue: 45 / 255.0),
-                          Color(red: 26 / 255.0, green: 2 / 255.0, blue: 20 / 255.0),
-                          Color(red: 23 / 255.0, green: 4 / 255.0, blue: 57 / 255.0)
-                      ]),
-                      startPoint: .topLeading,
-                      endPoint: .bottomTrailing
-                  )
-        .edgesIgnoringSafeArea(.all)
-      
-      HStack(spacing: 20) {
-          Button(action: {
-            playerViewModel.channel = "dvtv-channel"
-            self.playerViewModel.shouldPlay.toggle()
-          }) {
-            Image("dvtv-extra-logo")
-              .resizable()
-              .aspectRatio(contentMode: .fit)
-              .frame(width: 110, height: 70)
-              .padding()
-          }
-          .padding()
-          .frame(width: 230, height: 150)
-          .background(Color.black)
-          .foregroundColor(Color.black)
-          .clipShape(RoundedRectangle(cornerRadius: 12))
-          .buttonStyle(PlainButtonStyle())
-          .fullScreenCover(isPresented: $playerViewModel.shouldPlay) {
-              PlayerView()
-          }
-        
-        Button(action: {
-          playerViewModel.channel = "starmax-action"
-          self.playerViewModel.shouldPlay.toggle()
-        }) {
-          Image("starmax-action")
-            .resizable()
-            .aspectRatio(contentMode: .fit)
-            .frame(width: 110, height: 70)
-            .padding()
+      Button(action: {
+        Tivio.getEpgData { epgData in
+          print("EPGDATADEBUG:Loaded EPG data: ", epgData)
+          // Handle the epgData here, e.g., update the view model or state
+          print("EPGDATADEBUG: Loaded EPG data: ", epgData)
+                      // Convert the epgData to the appropriate type and update the view model
+                      if let epgItems = epgData as? [TivioEpgItem] {
+                        programViewModel.updatePrograms(with: epgItems)
+                      }
         }
-        .frame(width: 230, height: 150)
-        .background(Color.black)
-        .foregroundColor(Color.black)
-        .clipShape(RoundedRectangle(cornerRadius: 12))
-        .buttonStyle(PlainButtonStyle())
-        .fullScreenCover(isPresented: $playerViewModel.shouldPlay) {
-            PlayerView()
-        }
-        
-//        Button(action: {
-//          playerViewModel.channel = "starmax-family"
-//          self.playerViewModel.shouldPlay.toggle()
-//        }) {
-//          Image("starmax-family")
-//            .resizable()
-//            .aspectRatio(contentMode: .fit)
-//            .frame(width: 100, height: 100)
-//            .padding()
-//        }
-//        .frame(width: 260, height: 160)
-//        .background(Color.black)
-//        .foregroundColor(Color.black)
-//        .clipShape(RoundedRectangle(cornerRadius: 12))
-//        .buttonStyle(PlainButtonStyle())
-//        .fullScreenCover(isPresented: $playerViewModel.shouldPlay) {
-//            PlayerView()
-//        }
-        
-        Button(action: {
-          playerViewModel.channel = "starmax-drama"
-          self.playerViewModel.shouldPlay.toggle()
-        }) {
-          Image("starmax-drama")
-            .resizable()
-            .aspectRatio(contentMode: .fit)
-            .frame(width: 110, height: 70)
-            .padding()
-        }
-        .frame(width: 230, height: 150)
-        .background(Color.black)
-        .foregroundColor(Color.black)
-        .clipShape(RoundedRectangle(cornerRadius: 12))
-        .buttonStyle(PlainButtonStyle())
-        .fullScreenCover(isPresented: $playerViewModel.shouldPlay) {
-            PlayerView()
-        }
-        
-        Button(action: {
-          playerViewModel.channel = "starmax-comedy"
-          self.playerViewModel.shouldPlay.toggle()
-        }) {
-          Image("starmax-comedy")
-            .resizable()
-            .aspectRatio(contentMode: .fit)
-            .frame(width: 110, height: 70)
-            .padding()
-        }
-        .frame(width: 230, height: 150)
-        .background(Color.black)
-        .foregroundColor(Color.black)
-        .clipShape(RoundedRectangle(cornerRadius: 12))
-        .buttonStyle(PlainButtonStyle())
-        .fullScreenCover(isPresented: $playerViewModel.shouldPlay) {
-            PlayerView()
-        }
-        
-        Button(action: {
-          playerViewModel.channel = "oktagon-tv"
-          self.playerViewModel.shouldPlay.toggle()
-        }) {
-          Image("oktagon-logo")
-            .resizable()
-            .aspectRatio(contentMode: .fit)
-            .frame(width: 110, height: 70)
-            .padding()
-        }
-        .frame(width: 230, height: 150)
-        .background(Color.black)
-        .foregroundColor(Color.black)
-        .clipShape(RoundedRectangle(cornerRadius: 12))
-        .buttonStyle(PlainButtonStyle())
-        .fullScreenCover(isPresented: $playerViewModel.shouldPlay) {
-            PlayerView()
-        }
-        
+      }) {
+        Text("Get epg data")
       }
-      .padding()
+        HStack() {
+          Spacer()
+          VStack(spacing: 8) {
+            ChannelButton(imageName: "dvtv-extra-logo", channelName: "4586", playerViewModel: _playerViewModel)
+            ScrollView {
+              ForEach(programViewModel.programs.filter { $0.channelName == "4586" }, id: \.name) { program in
+                ProgramTile(program: program)
+              }
+            }
+          }
+          .padding(.horizontal, 10)
+          Spacer()
+          VStack(spacing: 8) {
+            ChannelButton(imageName: "starmax-action", channelName: "starmax-action", playerViewModel: _playerViewModel)
+            ScrollView {
+              ForEach(programViewModel.programs.filter { $0.channelName == "starmax-action" }, id: \.name) { program in
+                ProgramTile(program: program)
+              }
+            }
+          }
+          .padding(.horizontal, 10)
+          Spacer()
+          VStack(spacing: 8) {
+            ChannelButton(imageName: "starmax-drama", channelName: "starmax-drama", playerViewModel: _playerViewModel)
+            ScrollView {
+              ForEach(programViewModel.programs.filter { $0.channelName == "starmax-drama" }, id: \.name) { program in
+                ProgramTile(program: program)
+              }
+            }
+          }
+          .padding(.horizontal, 10)
+          Spacer()
+          VStack(spacing: 8) {
+            ChannelButton(imageName: "starmax-comedy", channelName: "starmax-comedy", playerViewModel: _playerViewModel)
+            ScrollView {
+              ForEach(programViewModel.programs.filter { $0.channelName == "starmax-comedy" }, id: \.name) { program in
+                ProgramTile(program: program)
+              }
+            }
+          }
+          .padding(.horizontal, 10)
+          Spacer()
+          VStack(spacing: 8) {
+            ChannelButton(imageName: "oktagon-logo", channelName: "oktagon-tv", playerViewModel: _playerViewModel)
+            ScrollView {
+              ForEach(programViewModel.programs.filter { $0.channelName == "oktagon-tv" }, id: \.name) { program in
+                ProgramTile(program: program)
+              }
+            }
+          }
+          .padding(.horizontal, 10)
+          //Spacer()
+        }
+        .padding()
+        .frame(maxWidth: .infinity)
+      
     }
     .edgesIgnoringSafeArea(.all)
+    .background(Color.black.edgesIgnoringSafeArea(.all))
   }
-  
+
+  struct ChannelButton: View {
+    var imageName: String
+    var channelName: String
+    @EnvironmentObject var playerViewModel: PlayerViewModel
+
+    var body: some View {
+      Button(action: {
+        playerViewModel.channel = channelName
+        playerViewModel.shouldPlayLive.toggle()
+      }) {
+        Image(imageName)
+          .resizable()
+          .aspectRatio(contentMode: .fit)
+          .frame(width: 130, height: 70)
+          .padding()
+      }
+      .background(Color.black)
+      .foregroundColor(Color.black)
+      .clipShape(RoundedRectangle(cornerRadius: 12))
+      .buttonStyle(PlainButtonStyle())
+      .fullScreenCover(isPresented: $playerViewModel.shouldPlayLive) {
+        PlayerView()
+      }
+    }
+  }
 }
 
 struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-        .environmentObject(PlayerViewModel())
-    }
+  static var previews: some View {
+    ContentView()
+      .environmentObject(PlayerViewModel())
+      .environmentObject(ProgramViewModel())
+  }
 }

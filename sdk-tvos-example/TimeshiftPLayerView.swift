@@ -1,50 +1,56 @@
+//
+//  TimeshiftPLayerView.swift
+//  sdk-tvos-example
+//
+//  Created by Richard Biroš on 23.05.2024.
+//
+
 import SwiftUI
 import AVKit
 import Tivio
 
-struct PlayerView: View {
+struct TimeshiftPlayerView: View {
     @EnvironmentObject var playerViewModel: PlayerViewModel
+    @EnvironmentObject var programViewModel: ProgramViewModel
+
 
     private let player = AVPlayer()
     private var playerController: PlayerController {
-      return PlayerController(player: self.player, playerViewModel: playerViewModel)
+        return PlayerController(player: self.player, playerViewModel: playerViewModel)
     }
 
-    var body: some View {
-        VideoPlayer(player: player)
-            .edgesIgnoringSafeArea(.all)
-            .onAppear {
-                updatePlayerChannel()
-            }
-            .onChange(of: playerViewModel.channel) { newChannel in
-                updatePlayerChannel()
-            }
-            .onChange(of: playerViewModel.markers) { _ in
-                updateInterstitialTimeRanges()
-            }
-            .onDisappear {
-                self.playerViewModel.shouldPlayLive = false
-                self.player.replaceCurrentItem(with: nil)
-            }
-    }
+  var body: some View {
+              VideoPlayer(player: player)
+                  .edgesIgnoringSafeArea(.all)
+                  .onAppear {
+                      updatePlayerChannel()
+                  }
+                  .onChange(of: programViewModel.currentProgram.name) { _ in
+                      updatePlayerChannel()
+                  }
+                  .onChange(of: playerViewModel.markers) { _ in
+                      updateInterstitialTimeRanges()
+                  }
+                  .onDisappear {
+                      self.playerViewModel.shouldPlay = false
+                      self.player.replaceCurrentItem(with: nil)
+                  }
+      }
 
     private func updatePlayerChannel() {
         if player.currentItem == nil {
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-          
             self.playerController.playerWrapper.setSource(TivioPlayerSource(
-                channel: playerViewModel.channel,
-                mode: "live",
+                channel: programViewModel.currentProgram.channelName,
+                mode: "timeshift",
                 uri: "",
-                epgFrom: Date(),
-                epgTo: Date(),
-                streamStart: Date(),
+                epgFrom: programViewModel.currentProgram.epgFrom,
+                epgTo: programViewModel.currentProgram.epgTo,
+                streamStart: programViewModel.currentProgram.epgFrom,
                 startFromPosition: 0
             ), calibrationId: "default")
         }
     }
-  
+
   private func updateInterstitialTimeRanges(for playerItem: AVPlayerItem? = nil) {
       let item = playerItem ?? player.currentItem
       let adTimestamps = generateInterstitialTimeRanges()
@@ -71,3 +77,4 @@ struct PlayerView: View {
       return interstitialTimeRanges
   }
 }
+
