@@ -6,8 +6,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/tiviostudio/ads-sdk-tvos",
       "state" : {
-        "revision" : "1f1d58e937923c08994bf9bb0e98a6483b9fe99a",
-        "version" : "2.0.0"
+        "revision" : "1f2d7d11c38a02f52658b3d7e25b6af9f76ba786",
+        "version" : "2.4.2"
       }
     }
   ],

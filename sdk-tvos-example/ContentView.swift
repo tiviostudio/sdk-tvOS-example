@@ -11,17 +11,17 @@ struct ContentView: View {
   var body: some View {
     GeometryReader { geometry in
       Button(action: {
-        Tivio.getEpgData { epgData in
-          print("EPGDATADEBUG:Loaded EPG data: ", epgData)
-          // Handle the epgData here, e.g., update the view model or state
-          print("EPGDATADEBUG: Loaded EPG data: ", epgData)
-                      // Convert the epgData to the appropriate type and update the view model
-                      if let epgItems = epgData as? [TivioEpgItem] {
-                        programViewModel.updatePrograms(with: epgItems)
-                      }
-        }
+        // Define channel names for which you want to get the EPG
+        let channelNames = ["4586", "starmax-action", "starmax-drama", "starmax-comedy", "oktagon-tv"]
+        Tivio.getEpgData(forChannels: channelNames) { epgData in
+                print("TivioDebug: Loaded EPG data: ", epgData)
+                // Handle the epgData here, e.g., update the view model or state
+                if let epgItems = epgData as? [TivioEpgItem] {
+                    programViewModel.updatePrograms(with: epgItems)
+                }
+            }
       }) {
-        Text("Get epg data")
+            Text("Get epg data")
       }
         HStack() {
           Spacer()

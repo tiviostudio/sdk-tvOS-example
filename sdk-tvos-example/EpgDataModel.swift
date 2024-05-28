@@ -2,7 +2,7 @@
 //  EpgDataModel.swift
 //  sdk-tvos-example
 //
-//  Created by Richard Biroš on 23.05.2024.
+//  Created by Richard Biroš on 28.05.2024.
 //
 
 import Foundation
@@ -28,4 +28,3 @@ struct EpgItem: Decodable {
 //        }
 //    }
 //}
-

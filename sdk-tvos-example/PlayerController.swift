@@ -53,6 +53,7 @@ class PlayerController: TivioPlayerWrapperDelegate {
   }
   
   func setSource(_ source: TivioPlayerSource!) {
+      print("TivioDebug: Source", source)
       // Convert markers from TivioMarker to the appropriate type if needed
       let markers = source.markers
       
