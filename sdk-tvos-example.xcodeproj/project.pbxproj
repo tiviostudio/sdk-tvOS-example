@@ -13,12 +13,12 @@
 		3119B5A827CF0407000CF40E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3119B5A727CF0407000CF40E /* Preview Assets.xcassets */; };
 		3119B5B927CF05DA000CF40E /* PlayerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3119B5B727CF05DA000CF40E /* PlayerController.swift */; };
 		3119B5BA27CF05DA000CF40E /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3119B5B827CF05DA000CF40E /* PlayerView.swift */; };
+		6A27B4262C061958003D0E22 /* Tivio in Frameworks */ = {isa = PBXBuildFile; productRef = 6A27B4252C061958003D0E22 /* Tivio */; settings = {ATTRIBUTES = (Required, ); }; };
 		6AEE105E2C05FB6900224CDD /* ProgramTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AEE105D2C05FB6900224CDD /* ProgramTile.swift */; };
 		6AEE10602C05FB8900224CDD /* EpgDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AEE105F2C05FB8900224CDD /* EpgDataModel.swift */; };
 		6AEE10622C05FBAF00224CDD /* PlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AEE10612C05FBAF00224CDD /* PlayerViewModel.swift */; };
 		6AEE10642C05FBD400224CDD /* ProgramViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AEE10632C05FBD400224CDD /* ProgramViewModel.swift */; };
 		6AEE10662C05FC1200224CDD /* TimeshiftPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AEE10652C05FC1200224CDD /* TimeshiftPlayerView.swift */; };
-		7E41CBCC2BC56B4A0090A4B9 /* Tivio in Frameworks */ = {isa = PBXBuildFile; productRef = 7E41CBCB2BC56B4A0090A4B9 /* Tivio */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -54,7 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7E41CBCC2BC56B4A0090A4B9 /* Tivio in Frameworks */,
+				6A27B4262C061958003D0E22 /* Tivio in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,6 +66,7 @@
 			children = (
 				3119B59F27CF0405000CF40E /* sdk-tvos-example */,
 				3119B59E27CF0405000CF40E /* Products */,
+				6A27B4242C061958003D0E22 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -103,6 +104,13 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		6A27B4242C061958003D0E22 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -121,7 +129,7 @@
 			);
 			name = "sdk-tvos-example";
 			packageProductDependencies = (
-				7E41CBCB2BC56B4A0090A4B9 /* Tivio */,
+				6A27B4252C061958003D0E22 /* Tivio */,
 			);
 			productName = "sdk-tvos-example";
 			productReference = 3119B59D27CF0405000CF40E /* sdk-tvos-example.app */;
@@ -410,7 +418,7 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		7E41CBCB2BC56B4A0090A4B9 /* Tivio */ = {
+		6A27B4252C061958003D0E22 /* Tivio */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 7E41CBCA2BC56B4A0090A4B9 /* XCRemoteSwiftPackageReference "ads-sdk-tvos" */;
 			productName = Tivio;
