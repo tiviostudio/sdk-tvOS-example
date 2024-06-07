@@ -1,8 +1,8 @@
 //
 //  PlayerViewModel.swift
-//  sdk-tvos-example
+//  example-tvos
 //
-//  Created by Richard Biroš on 28.05.2024.
+//  Created by Honza Jiráň on 04.04.2024.
 //
 
 import Foundation

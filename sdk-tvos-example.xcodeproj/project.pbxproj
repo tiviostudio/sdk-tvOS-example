@@ -14,6 +14,7 @@
 		3119B5B927CF05DA000CF40E /* PlayerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3119B5B727CF05DA000CF40E /* PlayerController.swift */; };
 		3119B5BA27CF05DA000CF40E /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3119B5B827CF05DA000CF40E /* PlayerView.swift */; };
 		6A27B4262C061958003D0E22 /* Tivio in Frameworks */ = {isa = PBXBuildFile; productRef = 6A27B4252C061958003D0E22 /* Tivio */; settings = {ATTRIBUTES = (Required, ); }; };
+		6AC83B022C13163E0026DD87 /* CustomSeekBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC83B012C13163E0026DD87 /* CustomSeekBar.swift */; };
 		6AEE105E2C05FB6900224CDD /* ProgramTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AEE105D2C05FB6900224CDD /* ProgramTile.swift */; };
 		6AEE10602C05FB8900224CDD /* EpgDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AEE105F2C05FB8900224CDD /* EpgDataModel.swift */; };
 		6AEE10622C05FBAF00224CDD /* PlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AEE10612C05FBAF00224CDD /* PlayerViewModel.swift */; };
@@ -42,6 +43,7 @@
 		3119B5A727CF0407000CF40E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		3119B5B727CF05DA000CF40E /* PlayerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerController.swift; sourceTree = "<group>"; };
 		3119B5B827CF05DA000CF40E /* PlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
+		6AC83B012C13163E0026DD87 /* CustomSeekBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSeekBar.swift; sourceTree = "<group>"; };
 		6AEE105D2C05FB6900224CDD /* ProgramTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramTile.swift; sourceTree = "<group>"; };
 		6AEE105F2C05FB8900224CDD /* EpgDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpgDataModel.swift; sourceTree = "<group>"; };
 		6AEE10612C05FBAF00224CDD /* PlayerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewModel.swift; sourceTree = "<group>"; };
@@ -89,9 +91,10 @@
 				6AEE10632C05FBD400224CDD /* ProgramViewModel.swift */,
 				3119B5B727CF05DA000CF40E /* PlayerController.swift */,
 				3119B5B827CF05DA000CF40E /* PlayerView.swift */,
+				6AEE10652C05FC1200224CDD /* TimeshiftPlayerView.swift */,
 				3119B5A427CF0407000CF40E /* Assets.xcassets */,
 				3119B5A627CF0407000CF40E /* Preview Content */,
-				6AEE10652C05FC1200224CDD /* TimeshiftPlayerView.swift */,
+				6AC83B012C13163E0026DD87 /* CustomSeekBar.swift */,
 			);
 			path = "sdk-tvos-example";
 			sourceTree = "<group>";
@@ -188,6 +191,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6AC83B022C13163E0026DD87 /* CustomSeekBar.swift in Sources */,
 				3119B5A327CF0405000CF40E /* ContentView.swift in Sources */,
 				3119B5A127CF0405000CF40E /* sdk_tvos_exampleApp.swift in Sources */,
 				3119B5B927CF05DA000CF40E /* PlayerController.swift in Sources */,

@@ -100,8 +100,8 @@ struct ContentView: View {
           .frame(width: 130, height: 70)
           .padding()
       }
-      .background(Color.black)
       .foregroundColor(Color.black)
+      .background(Color.black)
       .clipShape(RoundedRectangle(cornerRadius: 12))
       .buttonStyle(PlainButtonStyle())
       .fullScreenCover(isPresented: $playerViewModel.shouldPlayLive) {

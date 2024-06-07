@@ -6,8 +6,9 @@ struct PlayerView: View {
     @EnvironmentObject var playerViewModel: PlayerViewModel
 
     private let player = AVPlayer()
+    var playerWrapper: TivioPlayerWrapper = Tivio.getPlayerWrapper()
     private var playerController: PlayerController {
-      return PlayerController(player: self.player, playerViewModel: playerViewModel)
+      return PlayerController(player: self.player, playerViewModel: playerViewModel, playerWrapper: playerWrapper)
     }
 
     var body: some View {

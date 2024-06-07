@@ -1,10 +1,3 @@
-//
-//  AVPlayerController.swift
-//  example-ios
-//
-//  Created by Ladislav Navratil on 16.01.2022.
-//
-
 import Foundation
 import Tivio
 import AVFoundation
@@ -12,12 +5,13 @@ import AVFoundation
 class PlayerController: TivioPlayerWrapperDelegate {
     
   var player: AVPlayer
-  var playerWrapper: TivioPlayerWrapper = Tivio.getPlayerWrapper()
+  var playerWrapper: TivioPlayerWrapper
   weak var playerViewModel: PlayerViewModel?
   
-  init(player: AVPlayer, playerViewModel: PlayerViewModel) {
+  init(player: AVPlayer, playerViewModel: PlayerViewModel, playerWrapper: TivioPlayerWrapper) {
     self.player = player
     self.playerViewModel = playerViewModel
+    self.playerWrapper = playerWrapper
     self.playerWrapper.delegate = self
     
     self.player.addPeriodicTimeObserver(forInterval: CMTimeMake(value: 500, timescale: 1000), queue: .main) { [weak self] time in
@@ -25,46 +19,45 @@ class PlayerController: TivioPlayerWrapperDelegate {
     }
     
     NotificationCenter.default.addObserver(self, selector: #selector(playerDidFinishPlay), name: .AVPlayerItemDidPlayToEndTime, object: nil)
-//     NotificationCenter.default.addObserver(self, selector: #selector(playerSeeked), name: .AVPlayerItemTimeJumped, object: nil)
     
   }
   
-  @objc func getProgramTimestamps(){
+  @objc func getProgramTimestamps() {
     print("getProgramTimestamps")
   }
   
   @objc func playerDidFinishPlay() {
     print("playerDidFinishPlay AVPlayerItemDidPlayToEndTime")
     self.player.replaceCurrentItem(with: nil)
-    
     self.playerWrapper.reportPlaybackEnded()
   }
   
-  @objc func playerSeeked() {
-     print("TivioDebug:seeking Player wants to seek", UInt(self.player.currentTime().value))
-    if(self.player.currentTime().value != 0) {
-       self.playerWrapper.seek(to: UInt(self.player.currentTime().value))
-    }
+  @objc func playerWantsToSeek(to miliseconds: UInt) {
+     print("TivioDebug:seeking wants to seek to", miliseconds)
+     self.playerWrapper.seek(to: miliseconds)
   }
   
   func seek(to miliseconds: UInt) {
-     print("TivioDebug:Player seeked", miliseconds)
+     print("TivioDebug:seeking received seek from JS", miliseconds)
     self.player.seek(to: CMTimeMake(value: Int64(miliseconds), timescale: 1000))
   }
   
   func setSource(_ source: TivioPlayerSource!) {
-      print("TivioDebug: Source", source)
-      // Convert markers from TivioMarker to the appropriate type if needed
-      let markers = source.markers
-      
-      if !markers.isEmpty {
-          print("Markers: \(markers)")
-          // Perform any additional actions with markers
-          DispatchQueue.main.async {
-              self.playerViewModel?.markers = markers
-          }
-      }
-      
+    let markers = source.markers
+    if !markers.isEmpty {
+        DispatchQueue.main.async {
+            self.playerViewModel?.markers = markers
+
+            // Check if markers are defined after async set in the DispatchQueue
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+                if let updatedMarkers = self.playerViewModel?.markers {
+                  print("TivioDebug: Markers: \(updatedMarkers.count)")
+                } else {
+                    print("TivioDebug: No markers available")
+                }
+            }
+        }
+    }
       if source.uri != "" {
           self.player.replaceCurrentItem(with: AVPlayerItem(url: URL(string: source.uri)!))
           self.player.seek(to: CMTimeMake(value: Int64(source.startPosition), timescale: 1000))

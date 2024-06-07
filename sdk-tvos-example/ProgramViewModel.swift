@@ -1,8 +1,8 @@
 //
 //  ProgramViewModel.swift
-//  sdk-tvos-example
+//  example-tvos
 //
-//  Created by Richard Biroš on 28.05.2024.
+//  Created by Honza Jiráň on 16.05.2024.
 //
 
 import Foundation
@@ -59,4 +59,3 @@ class ProgramViewModel: ObservableObject, TivioProgramGuideDelegate {
     updatePrograms(with: epgData)
   }
 }
-

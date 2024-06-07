@@ -1,8 +1,8 @@
 //
 //  ProgramTile.swift
-//  sdk-tvos-example
+//  example-tvos
 //
-//  Created by Richard Biroš on 28.05.2024.
+//  Created by Honza Jiráň on 16.05.2024.
 //
 
 import Foundation
@@ -52,14 +52,11 @@ struct ProgramTile: View {
         .clipShape(RoundedRectangle(cornerRadius: 10))
       }
       .buttonStyle(PlainButtonStyle())
-//              .focusable(true) { focused in
-//                  isFocused = focused
-//              }
       .background(Color.clear)
       .frame(width: 270)
       .fullScreenCover(isPresented: $isPresentingFullScreenCover) {
         TimeshiftPlayerView()
+          .background(Color.black)
       }
     }
 }
-
