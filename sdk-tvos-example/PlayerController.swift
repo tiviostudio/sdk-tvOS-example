@@ -44,25 +44,21 @@ class PlayerController: TivioPlayerWrapperDelegate {
   
   func setSource(_ source: TivioPlayerSource!) {
     let markers = source.markers
-    if !markers.isEmpty {
-        DispatchQueue.main.async {
-            self.playerViewModel?.markers = markers
-
-            // Check if markers are defined after async set in the DispatchQueue
-            DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
-                if let updatedMarkers = self.playerViewModel?.markers {
-                  print("TivioDebug: Markers: \(updatedMarkers.count)")
-                } else {
-                    print("TivioDebug: No markers available")
-                }
-            }
-        }
+    DispatchQueue.main.async {
+        self.playerViewModel?.markers = markers
     }
-      if source.uri != "" {
-          self.player.replaceCurrentItem(with: AVPlayerItem(url: URL(string: source.uri)!))
-          self.player.seek(to: CMTimeMake(value: Int64(source.startPosition), timescale: 1000))
-          self.player.play()
+      
+  if source.uri != "" {
+      if let adMetadata = source.adMetadata {
+          print("AdMetadata is present:", adMetadata)
+          // Add any additional handling for adMetadata here
+      } else {
+          print("No AdMetadata available for this source")
       }
+      self.player.replaceCurrentItem(with: AVPlayerItem(url: URL(string: source.uri)!))
+      self.player.seek(to: CMTimeMake(value: Int64(source.startPosition), timescale: 1000))
+      self.player.play()
+  }
   }
 
   

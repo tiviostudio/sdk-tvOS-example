@@ -92,9 +92,9 @@
 				3119B5B727CF05DA000CF40E /* PlayerController.swift */,
 				3119B5B827CF05DA000CF40E /* PlayerView.swift */,
 				6AEE10652C05FC1200224CDD /* TimeshiftPlayerView.swift */,
+				6AC83B012C13163E0026DD87 /* CustomSeekBar.swift */,
 				3119B5A427CF0407000CF40E /* Assets.xcassets */,
 				3119B5A627CF0407000CF40E /* Preview Content */,
-				6AC83B012C13163E0026DD87 /* CustomSeekBar.swift */,
 			);
 			path = "sdk-tvos-example";
 			sourceTree = "<group>";

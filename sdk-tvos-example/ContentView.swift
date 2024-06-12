@@ -12,7 +12,7 @@ struct ContentView: View {
     GeometryReader { geometry in
       Button(action: {
         // Define channel names for which you want to get the EPG
-        let channelNames = ["4586", "starmax-action", "starmax-drama", "starmax-comedy", "oktagon-tv"]
+        let channelNames = ["4586", "oktagon-tv"]
         Tivio.getEpgData(forChannels: channelNames) { epgData in
                 print("TivioDebug: Loaded EPG data: ", epgData)
                 // Handle the epgData here, e.g., update the view model or state
