@@ -48,17 +48,15 @@ class PlayerController: TivioPlayerWrapperDelegate {
         self.playerViewModel?.markers = markers
     }
       
-  if source.uri != "" {
-      if let adMetadata = source.adMetadata {
-          print("AdMetadata is present:", adMetadata)
-          // Add any additional handling for adMetadata here
-      } else {
-          print("No AdMetadata available for this source")
-      }
-      self.player.replaceCurrentItem(with: AVPlayerItem(url: URL(string: source.uri)!))
-      self.player.seek(to: CMTimeMake(value: Int64(source.startPosition), timescale: 1000))
-      self.player.play()
+  if let adMetadata = source.adMetadata {
+      print("AdMetadata is present:", adMetadata)
+      // Add any additional handling for adMetadata here
+  } else {
+      print("No AdMetadata available for this source")
   }
+  self.player.replaceCurrentItem(with: AVPlayerItem(url: URL(string: source.uri)!))
+  self.player.seek(to: CMTimeMake(value: Int64(source.startPosition), timescale: 1000))
+  self.player.play()
   }
 
   
