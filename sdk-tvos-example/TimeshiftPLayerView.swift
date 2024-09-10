@@ -16,6 +16,7 @@ struct TimeshiftPlayerView: View {
     @State private var currentTime: Double = 0.0
     @State private var duration: Double = 0.0
     @State private var adTimes: [Double] = []
+    @State private var isPlayerOnTop: Bool = true
   
     private func updateAdTimes() {
       let markers = playerViewModel.markers.filter { $0.type == "AD" }
@@ -31,6 +32,11 @@ struct TimeshiftPlayerView: View {
       let newTime = max(currentTime - 10, 0)
       seek(to: newTime)
     }
+  
+  private func setIsPlayerOnTop() {
+    isPlayerOnTop.toggle()
+    self.playerController.playerOnTop(isPlayerOnTop: isPlayerOnTop)
+  }
 
     private func seekForward() {
       let newTime = min(currentTime + 10, duration)
@@ -82,6 +88,10 @@ struct TimeshiftPlayerView: View {
                     Image(systemName: "goforward.10")
                         .font(.largeTitle)
                 }
+              Button(action: setIsPlayerOnTop) {
+                Image(systemName: "tv.inset.filled")
+                    .font(.largeTitle)
+              }
             }
             .padding()
 

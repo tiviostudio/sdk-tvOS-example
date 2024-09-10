@@ -25,6 +25,11 @@ class PlayerController: TivioPlayerWrapperDelegate {
   @objc func getProgramTimestamps() {
     print("getProgramTimestamps")
   }
+    
+  @objc func playerOnTop(isPlayerOnTop: Bool) {
+    print("isPlayerOnTop", isPlayerOnTop)
+    self.playerWrapper.player(onTop: isPlayerOnTop)
+  }
   
   @objc func playerDidFinishPlay() {
     print("playerDidFinishPlay AVPlayerItemDidPlayToEndTime")
